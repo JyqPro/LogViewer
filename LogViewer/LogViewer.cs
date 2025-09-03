@@ -5,7 +5,7 @@ namespace LogViewer
     public partial class LogViewer : Form
     {
         private const string INFO = "[INFO ]";
-        private const string TEST_ITEM_START_INFO = "[INFO ] LUA: ============================== ¿ªÊ¼²âÊÔ ";
+        private const string TEST_ITEM_START_INFO = "[INFO ] LUA: ============================== å¼€å§‹æµ‹è¯• ";
         private const string MARK_CHAR = "=";
         public LogViewer()
         {
@@ -101,8 +101,8 @@ namespace LogViewer
             {
                 var fileDialog = new OpenFileDialog
                 {
-                    Filter = "logÎÄ¼ş|*.log|txtÎÄ¼ş|*.txt",
-                    Title = "Ñ¡ÔñÈÕÖ¾ÎÄ¼ş"
+                    Filter = "logæ–‡ä»¶|*.log|txtæ–‡ä»¶|*.txt",
+                    Title = "é€‰æ‹©æ—¥å¿—æ–‡ä»¶"
                 };
                 if (string.IsNullOrEmpty(file))
                 {
@@ -115,7 +115,7 @@ namespace LogViewer
                 string searchText = TEST_ITEM_START_INFO;
                 string filePath = string.IsNullOrEmpty(file) ? fileDialog.FileName : file;
                 var lines = File.ReadAllLines(filePath);
-                var logLines = lines.Select((line, index) => line).Where(x => x.Contains(searchText));
+                var logLines = lines.Select((line, index) => line).Where(x => x.Contains(searchText)).ToList();
                 txt_content.Clear();
                 txt_content.Lines = lines;
                 var sp = new StringBuilder();
@@ -136,7 +136,7 @@ namespace LogViewer
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"¶ÁÈ¡ÎÄ¼ş³ö´í£º{ex.Message}");
+                MessageBox.Show($"è¯»å–æ–‡ä»¶å‡ºé”™ï¼š{ex.Message}");
             }
         }
         private static string GetTestItemName(string line)
