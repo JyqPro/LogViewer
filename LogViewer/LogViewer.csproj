@@ -9,9 +9,8 @@
     <ApplicationIcon>log.ico</ApplicationIcon>
   </PropertyGroup>
 
-	<PropertyGroup>
-		<OutputPath>..\Build\LogViewer\$(Configuration)\</OutputPath>
-		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+	<PropertyGroup Condition="'$(Configuration)' == 'Release'">
+		<OutputPath>$(MSBuildProjectDirectory)\Build\Release\</OutputPath>
 	</PropertyGroup>
 
   <ItemGroup>
