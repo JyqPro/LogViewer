@@ -115,13 +115,12 @@ namespace LogViewer
                 string searchText = TEST_ITEM_START_INFO;
                 string filePath = string.IsNullOrEmpty(file) ? fileDialog.FileName : file;
                 var lines = File.ReadAllLines(filePath);
-                var logLines = lines.Where(x => x.Contains(searchText));
+                var logLines = lines.Where(x => x.Contains(searchText)).ToList();
                 txt_content.Clear();
                 txt_content.Lines = lines;
                 var sp = new StringBuilder();
                 if (loadTestItems)
                 {
-                    sp.AppendLine("loadtestitems");
                     tree_testList.Nodes.Clear();
                     foreach (var item in logLines)
                     {
@@ -130,8 +129,6 @@ namespace LogViewer
                         sp.AppendLine(name);
                         tree_testList.Nodes.Add(node);
                     }
-                    var path = Environment.CurrentDirectory + "\\log.txt";
-                    File.WriteAllText(path, sp.ToString());
                 }
             }
             catch (Exception ex)
