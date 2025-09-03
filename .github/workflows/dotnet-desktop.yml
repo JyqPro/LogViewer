@@ -23,10 +23,10 @@ jobs:
       run: dotnet restore MyWinFormsApp.sln
 
     - name: Build in Release mode
-      run: dotnet build MyWinFormsApp.sln -c Release
+      run: dotnet build LogViewer.sln -c Release
 
     - name: Publish self-contained (可选)
-      run: dotnet publish MyWinFormsApp/MyWinFormsApp.csproj -c Release -o Build/ReleasePublish --self-contained false
+      run: dotnet publish LogViewer/LogViewer.csproj -c Release -o Build/ReleasePublish --self-contained false
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
