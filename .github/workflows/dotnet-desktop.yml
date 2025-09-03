@@ -23,13 +23,13 @@ jobs:
       run: dotnet restore LogViewer/LogViewer.sln
 
     - name: Build in Release mode
-      run: dotnet build LogViewer/LogViewer.sln -c Release
+      run: dotnet build LogViewer/LogViewer.sln -c Release -o Build/Release
 
     - name: Publish self-contained (可选)
-      run: dotnet publish LogViewer/LogViewer.csproj -c Release -o Build/ReleasePublish --self-contained false
+      run: dotnet publish LogViewer/LogViewer.csproj -c Release -o Build/ReleasePublish --self-contained true
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
       with:
         name: ReleaseBuild
-        path: Build/Release
+        path: Build/Release/**
