@@ -115,7 +115,7 @@ namespace LogViewer
                 string searchText = TEST_ITEM_START_INFO;
                 string filePath = string.IsNullOrEmpty(file) ? fileDialog.FileName : file;
                 var lines = File.ReadAllLines(filePath);
-                var logLines = lines.Select((line, index) => line).Where(x => x.Contains(searchText)).ToList();
+                var logLines = lines.Where(x => x.Contains(searchText));
                 txt_content.Clear();
                 txt_content.Lines = lines;
                 var sp = new StringBuilder();
