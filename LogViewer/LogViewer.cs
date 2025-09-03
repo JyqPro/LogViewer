@@ -1,3 +1,5 @@
+using System.Text;
+
 namespace LogViewer
 {
     public partial class LogViewer : Form
@@ -116,15 +118,20 @@ namespace LogViewer
                 var logLines = lines.Select((line, index) => line).Where(x => x.Contains(searchText));
                 txt_content.Clear();
                 txt_content.Lines = lines;
+                var sp = new StringBuilder();
                 if (loadTestItems)
                 {
+                    sp.AppendLine("loadtestitems");
                     tree_testList.Nodes.Clear();
                     foreach (var item in logLines)
                     {
                         var name = GetTestItemName(item);
                         var node = new TreeNode(name, 0, 0);
+                        sp.AppendLine(name);
                         tree_testList.Nodes.Add(node);
                     }
+                    var path = Environment.CurrentDirectory + "\\log.txt";
+                    File.WriteAllText(path, sp.ToString());
                 }
             }
             catch (Exception ex)
