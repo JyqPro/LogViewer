@@ -20,10 +20,10 @@ jobs:
         dotnet-version: '8.0.x'
 
     - name: Restore dependencies
-      run: dotnet restore MyWinFormsApp.sln
+      run: dotnet restore LogViewer/LogViewer.sln
 
     - name: Build in Release mode
-      run: dotnet build LogViewer.sln -c Release
+      run: dotnet build LogViewer/LogViewer.sln -c Release
 
     - name: Publish self-contained (可选)
       run: dotnet publish LogViewer/LogViewer.csproj -c Release -o Build/ReleasePublish --self-contained false
