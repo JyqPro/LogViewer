@@ -23,7 +23,7 @@ jobs:
       run: dotnet restore LogViewer/LogViewer.sln
 
     - name: Build in Release mode
-      run: dotnet build LogViewer/LogViewer.sln -c Release -o Build/Release
+      run: dotnet build LogViewer/LogViewer.sln -c Release
 
     - name: Publish self-contained (可选)
       run: dotnet publish LogViewer/LogViewer.csproj -c Release -o Build/ReleasePublish --self-contained true
